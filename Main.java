@@ -9,9 +9,6 @@ public class Main {
 
         System.out.println("Card ID: " + id);
 
-        card.setRank();
-        card.setSuit();
-
         System.out.println("Suit: " + card.getSuit());
         System.out.println("Rank: " + card.getRank());
         System.out.println("String: " + card.toString());
