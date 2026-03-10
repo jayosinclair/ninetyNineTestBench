@@ -27,64 +27,55 @@ Card objects share the arrays.
 
 public class Card {
     
-    private static String[] suitName = {"Diamonds", "Clubs", "Hearts", "Spades"};
-    private static String[] rankName = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+    //Static member variables (perfect arrays in this case)
+    private static final String[] suitName = {"Diamonds", "Clubs", "Hearts", "Spades"};
+    private static final String[] rankName = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
 
-
-    private final int NUM_CARDS_PER_SUIT = 13;
+    private final int NUM_CARDS_PER_SUIT = 13; //I thought about getting rid of this and just using rankName.length, but I don't know if that's a good idea. 
+    // I think it's easier to understand from a readability standpoint to just have a constant, but there are now two sources of truth to maintain...
     private int cardID;
     private int suit;
     private int rank;
     private String stdName;
 
-    public Card (int cardID){
+    public Card (int id){
 
-        this.cardID = cardID;
-        this.suit = -1; //I elected to keep the cardID as an instance variable to use it in breaking out setRank and setSuit methods to make it more readable and not just
-                        //perform calculations here using the parameter variable cardID.
-        this.rank = -1;
-        this.stdName = "";
+        cardID = id; //I elected to keep the cardID as an instance variable to use it in breaking out setRank and setSuit methods 
+                     //to make it more readable and not just perform calculations here for suit and rank using the parameter variable id.
+        suit = -1;       
+        rank = -1;
+        stdName = "";
 
     }
 
-
     public void setRank(){
 
-        this.rank = this.cardID % NUM_CARDS_PER_SUIT; //The repeating pattern of ranks for each suit is like hours on a clock.
-                            
+        rank = cardID % NUM_CARDS_PER_SUIT; //The repeating pattern of ranks for each suit is like hours on a clock. 
 
     }
 
     public void setSuit(){
 
-        this.suit = this.cardID / NUM_CARDS_PER_SUIT; //Integer division will get the suit.
+        suit = cardID / NUM_CARDS_PER_SUIT; //Integer division will get the suit.
 
     }
 
     public int getSuit(){
 
-        return this.suit;
+        return suit;
 
     }
 
     public int getRank(){
 
-        return this.rank;
+        return rank;
 
     }
 
+    @Override
     public String toString(){
 
-        //Do AI research.
-
-        /*
-        
-        A convenient way to create the standard names is to define String arrays for the rank and
-        suit names, then use the numeric values as indices to retrieve the appropriate names. Each
-        card does NOT need its own copies of these String arrays, so declare them in a way that all
-        Card objects share the arrays.
-        
-        */
+        /*Here was my initial code (this is commented out because I changed it after using Gemini as required by the assignment):
 
         String left = "";
         String middle = "of";
@@ -119,5 +110,13 @@ public class Card {
 
     }
 
+    */
+
+
+    String left = rankName[this.getRank()];
+    String right = suitName[this.getSuit()];
+    return left + " of " + right;
+
+    }
 
 }
