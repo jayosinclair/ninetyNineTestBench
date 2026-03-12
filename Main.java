@@ -12,30 +12,19 @@ public class Main {
 
     }
     
-    
+
     
     Deck deck = new Deck(1);
 
+        for (int i = 0; i < 54; i++){
+
+            System.out.println("\nCurrent Deck Size: " + deck.getCurrentCardCount());
+
+            System.out.println("Card " + "#" + (i+1) + ": " + deck.getNextCard());
+
+        }
+
         System.out.println("\nCurrent Deck Size: " + deck.getCurrentCardCount());
-
-        System.out.println("First Card: " + deck.getNextCard());
-
-        System.out.println("Current Deck Size: " + deck.getCurrentCardCount());
-
-        System.out.println("Second Card: " + deck.getNextCard());
-
-        System.out.println("Current Deck Size: " + deck.getCurrentCardCount());
-
-        System.out.println("Third Card: " + deck.getNextCard());
-
-        System.out.println("Current Deck Size: " + deck.getCurrentCardCount());
-
-        System.out.println("Fourth Card: " + deck.getNextCard());
-
-        System.out.println("Current Deck Size: " + deck.getCurrentCardCount());
-
-
-
 
 
     }
